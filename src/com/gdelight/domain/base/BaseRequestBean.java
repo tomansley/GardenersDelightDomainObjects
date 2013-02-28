@@ -10,6 +10,7 @@ import com.gdelight.metrics.base.BaseRequestMetricBean;
 public class BaseRequestBean {
 
 	private TRANSACTION_TYPE transactionType = null;
+	private String userId = "";
 	private PostUserBean user = null;
 	private STATUS_TYPE status = STATUS_TYPE.INITIAL;
 	private String internalId = "";
@@ -87,6 +88,14 @@ public class BaseRequestBean {
 				break;
 			}
 		}
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public List<RequestErrorBean> getErrors() {

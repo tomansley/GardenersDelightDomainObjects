@@ -3,9 +3,9 @@ package com.gdelight.domain.user;
 public class PostUserBean implements Comparable<PostUserBean> {
 
 	private boolean active = false;
-	private String license = "";
+	private String email = "";
 	private String name = "";
-	private boolean isLicenseValid = false;
+	private boolean isEmailValid = false;
 	private double revenueShare = 0.0;
 	private int affiliateId = 0;
 	private Integer defaultTier = 0;
@@ -19,12 +19,12 @@ public class PostUserBean implements Comparable<PostUserBean> {
 		this.id = id;
 	}
 	
-	public String getLicense() {
-		return license;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setLicense(String license) {
-		this.license = license;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getName() {
@@ -52,12 +52,12 @@ public class PostUserBean implements Comparable<PostUserBean> {
 		return name.compareTo(otherLender.getName());
 	}
 	
-	public boolean isLicenseValid() {
-		return isLicenseValid;
+	public boolean isEmailValid() {
+		return isEmailValid;
 	}
 
-	public void setLicenseValid(boolean isLicenseValid) {
-		this.isLicenseValid = isLicenseValid;
+	public void setEmailValid(boolean isEmailValid) {
+		this.isEmailValid = isEmailValid;
 	}
 
 	public double getRevenueShare() {
@@ -94,8 +94,8 @@ public class PostUserBean implements Comparable<PostUserBean> {
 		
 		str.append("<name>" + name + "</name>\n");
 		str.append("<isActive>" + active + "</isActive>\n");
-		str.append("<license>" + license + "</license>\n");
-		str.append("<licenseValid>" + isLicenseValid + "</licenseValid>\n");
+		str.append("<license>" + email + "</license>\n");
+		str.append("<licenseValid>" + isEmailValid + "</licenseValid>\n");
 		str.append("<revenueShare>" + revenueShare + "</revenueShare>\n");
 		str.append("<affiliateId>" + affiliateId + "</affiliateId>\n");
 		str.append("<defaultTier>" + defaultTier + "</defaultTier>\n");
