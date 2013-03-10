@@ -21,8 +21,6 @@ public class JsonTest {
 		
 		StarterRequestBean bean = new StarterRequestBean();
 		
-		bean.setInternalId("internal ID");
-		bean.setExternalId("External ID");
 		bean.setLastRequestTime(new Date());
 		bean.setRequestTime(new Date());
 		bean.setStatus(STATUS_TYPE.INITIAL);
@@ -34,8 +32,6 @@ public class JsonTest {
 		
 		StarterRequestBean bean2 = (StarterRequestBean) JsonUtils.parseJSonDocument(json, StarterRequestBean.class);
 		
-		System.out.println("Internal ID       = " + bean2.getInternalId());
-		System.out.println("External ID       = " + bean2.getExternalId());
 		System.out.println("Last Request Time = " + bean2.getLastRequestTime());
 		System.out.println("Request Time      = " + bean2.getRequestTime());
 		System.out.println("Status            = " + bean2.getStatus());

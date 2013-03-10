@@ -4,17 +4,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.gdelight.domain.user.PostUserBean;
+import com.gdelight.domain.user.UserBean;
 import com.gdelight.metrics.base.BaseRequestMetricBean;
 
 public class BaseRequestBean {
 
 	private TRANSACTION_TYPE transactionType = null;
-	private String userId = "";
-	private PostUserBean user = null;
+	private String userId = ""; //need this here so that there is a place to initially put the data.
+	private String token = "";
+	private UserBean user = null;
 	private STATUS_TYPE status = STATUS_TYPE.INITIAL;
-	private String internalId = "";
-	private String externalId = "";
 	private Date lastRequestTime = new Date(0);
 	private Date requestTime = new Date();
 	private List<RequestErrorBean> errors = new ArrayList<RequestErrorBean>();
@@ -24,7 +23,10 @@ public class BaseRequestBean {
 	// Available Transactions as an enumeration
 	//------------------------------------------
 	public static enum TRANSACTION_TYPE {
-		LOGIN ("001");
+		LOGIN ("001"),
+		MAKE_AVAILABLE("002"),
+		FIND_AVAILABLE("003"),
+		SIGNUP("004");
 		
 		private final String transactionNum;
 		TRANSACTION_TYPE(String transactionNum) {
@@ -145,22 +147,6 @@ public class BaseRequestBean {
 		}
 	}
 
-	public String getExternalId() {
-		return externalId;
-	}
-
-	public void setExternalId(String externalId) {
-		this.externalId = externalId;
-	}
-
-	public String getInternalId() {
-		return internalId;
-	}
-
-	public void setInternalId(String internalId) {
-		this.internalId = internalId;
-	}
-
 	public Date getLastRequestTime() {
 		return lastRequestTime;
 	}
@@ -180,15 +166,23 @@ public class BaseRequestBean {
 		this.requestTime = requestTime;
 	}
 	
-	public PostUserBean getUser() {
+	public UserBean getUser() {
 		if (user == null) {
-			user = new PostUserBean();
+			user = new UserBean();
 		}
 		return user;
 	}
 
-	public void setUser(PostUserBean user) {
+	public void setUser(UserBean user) {
 		this.user = user;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 
 	public BaseRequestMetricBean getMetrics() {

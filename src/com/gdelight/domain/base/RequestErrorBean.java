@@ -63,10 +63,10 @@ public class RequestErrorBean {
 	
 	public String toString() {
 		StringBuffer str = new StringBuffer();
-		str.append("<CMVRequestErrorBean>");
+		str.append("<RequestErrorBean>");
 			str.append("<ErrorCode>" + errorCode + "</ErrorCode>");
 			str.append("<ErrorMessage>" + this.getErrorMessage() + "</ErrorMessage>");
-		str.append("</CMVRequestErrorBean>");
+		str.append("</RequestErrorBean>");
 
 		return str.toString();
 
