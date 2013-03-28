@@ -3,8 +3,6 @@ package com.gdelight.domain.base;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.gdelight.tools.string.StringUtils;
-
 public class RequestErrorBean {
 
 	private int errorCode = 0;
@@ -45,7 +43,7 @@ public class RequestErrorBean {
 		
 		//if there are arguments for message then perform substitution
 		if (!arguments.isEmpty()) {
-			message = StringUtils.substituteMessageVariables(SUBST_KEY, arguments, message);
+			message = substituteMessageVariables(SUBST_KEY, arguments, message);
 		}
 		
 		return message;
@@ -70,6 +68,25 @@ public class RequestErrorBean {
 
 		return str.toString();
 
+	}
+
+	/**
+	 * CURRENTLY EXISTS HERE SO THAT WE DONT NEED TO IMPORT TOOLS INTO ANDROID PROJECT
+	 * Method to substitute variables in the string provided.  For example if a property existed
+	 * with key = testVariable then any match on the pattern $$testVariable would be replaced by the keys value.
+	 * @param substKey the key to look for to be substituting.  In this method if the key is $$ it will look for $$0, $$1, $$2 etc. 
+	 * @param props the properties to be substituted in
+	 * @param str the string that contains the substitutions that are to be made.
+	 * @return the string with all substitutions made.
+	 */
+	public static String substituteMessageVariables(String substKey, List<String> props, String str) {
+		String newStr = str;
+		String prop = "";
+		for (int i = 0; i < props.size(); i++) {
+			prop = props.get(i);
+			newStr = newStr.replace(substKey+i, prop);
+		}
+		return newStr;
 	}
 
 }

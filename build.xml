@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<project name="CMVDomainObjects" default="jar">
+<project name="GardenersDelightDomainObjects" default="jar">
 	
 	<dirname property="directory.base" file="${ant.file}" />
-	
-	<import file="${directory.base}/../build/ant/build-utils.xml"/>
+
 	
 	<!-- Initialize the Time Stamp -->
 	<tstamp>
@@ -14,7 +13,6 @@
 	<property name="directory.build" value="${directory.base}/build" />
 	<property name="directory.test.results" value="${directory.base}/build/tests" />
 	<property name="directory.dist" value="${directory.base}/dist" />
-	<property name="java.compiler" value="${directory.base}/../java/jdk1.6.0_23/bin/javac.exe" />
 	<property name="directory.properties" value="${directory.base}/properties/local" />
 
 	<!-- Compiler options -->
@@ -41,8 +39,6 @@
 	<path id="compile.classpath">
 		<pathelement location="${directory.build}" />
 		<pathelement location="${directory.build}/classes"/>
-		<pathelement location="${directory.base}/../Tools/dist/cmv-tools.jar" />
-		<pathelement location="${directory.base}/../libs/log4j-1.2.8.jar" />
 		<pathelement location="${directory.properties}" />
 
 	</path>
@@ -62,21 +58,21 @@
 		<mkdir dir="${directory.build}/tests" />
 	</target>
 
-	<target name="compile" depends="clean, -compile-tools" description="Compiles all source code for project">
+	<target name="compile" depends="clean" description="Compiles all source code for project">
 		<javac includeantruntime="false" destdir="${directory.build}/classes" debug="${compiler.debug}"
 			nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}"
-			executable="${java.compiler}" fork="true" srcdir="${directory.base}/src">
+			fork="true" srcdir="${directory.base}/src">
 			<classpath refid="compile.classpath" />
 			<patternset refid="ignored.files" />
 		</javac>
-
+<!-- 
 		<javac includeantruntime="false" destdir="${directory.build}/classes" debug="${compiler.debug}"
 			nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}"
-			executable="${java.compiler}" fork="true" srcdir="${directory.base}/test">
+			fork="true" srcdir="${directory.base}/test">
 			<classpath refid="compile.classpath" />
 			<patternset refid="ignored.files" />
 		</javac>
-
+-->
 		<copy todir="${directory.build}/classes">
 			<fileset dir="${directory.base}/src">
 				<patternset refid="compiler.resources" />
@@ -98,7 +94,7 @@
 	</target>
 
 	<target name="jar" depends="compile" description="Will build everything and jar it up">
-		<jar destfile="${directory.dist}/cmv-domain-objects.jar">
+		<jar destfile="${directory.dist}/gdelight-domain-objects.jar">
 			<fileset dir="${directory.build}/classes"/>
 			<metainf dir="${directory.base}/META-INF" casesensitive="true" />
 		</jar>

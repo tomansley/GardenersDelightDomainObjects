@@ -2,6 +2,7 @@ package com.gdelight.domain.item;
 
 public class AvailableItem extends Item {
 
+	private static final long serialVersionUID = 1L;
 	private Double latitude = new Double(-1);
 	private Double longitude = new Double(-1);
 	private Double distance = new Double(0);

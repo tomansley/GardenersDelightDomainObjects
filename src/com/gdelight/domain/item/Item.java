@@ -1,9 +1,11 @@
 package com.gdelight.domain.item;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class Item {
+public class Item implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private String name = "";
 	private String amount = "";
 	private String subGroup = ""; //BRAEBURN, GRANNY SMITH, MCINTOSH

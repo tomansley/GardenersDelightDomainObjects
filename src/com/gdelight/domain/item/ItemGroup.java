@@ -1,10 +1,12 @@
 package com.gdelight.domain.item;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemGroup {
+public class ItemGroup implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private String name = "";
 	private List<Item> items = new ArrayList<Item>();
 	private String location = "";

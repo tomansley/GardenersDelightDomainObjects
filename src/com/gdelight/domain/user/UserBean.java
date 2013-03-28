@@ -1,11 +1,11 @@
 package com.gdelight.domain.user;
 
+import java.io.Serializable;
 import java.util.Date;
 
-import com.gdelight.tools.json.JsonUtils;
+public class UserBean implements Comparable<UserBean>, Serializable {
 
-public class UserBean implements Comparable<UserBean> {
-
+	private static final long serialVersionUID = 1L;
 	private boolean active = false;
 	private String email = "";
 	private String token = "";
@@ -95,10 +95,6 @@ public class UserBean implements Comparable<UserBean> {
 
 	public void setLatitude(double latitude) {
 		this.latitude = latitude;
-	}
-
-	public String toString() {
-		return JsonUtils.getJSonDocument(this);
 	}
 
 }

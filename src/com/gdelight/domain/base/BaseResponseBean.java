@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.gdelight.domain.base.BaseRequestBean.TRANSACTION_TYPE;
+import com.gdelight.domain.user.UserBean;
 
 public class BaseResponseBean {
 
 	private BaseRequestBean.TRANSACTION_TYPE transactionType = null;
 	private STATUS_TYPE status = STATUS_TYPE.SUCCESS;
 	private List<RequestErrorBean> errors = new ArrayList<RequestErrorBean>();
+	private UserBean user = null;
 
 	public static enum STATUS_TYPE {
 		SUCCESS ("S"),
@@ -94,6 +96,14 @@ public class BaseResponseBean {
 				break;
 			}
 		}
+	}
+
+	public UserBean getUser() {
+		return user;
+	}
+
+	public void setUser(UserBean user) {
+		this.user = user;
 	}
 
 }
