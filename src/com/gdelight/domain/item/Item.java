@@ -51,5 +51,5 @@ public class Item implements Serializable {
 	public void setActive(Boolean active) {
 		this.active = active;
 	}
-	
+
 }

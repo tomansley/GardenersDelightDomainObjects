@@ -24,7 +24,7 @@ public class BaseRequestBean {
 	//------------------------------------------
 	public static enum TRANSACTION_TYPE {
 		LOGIN ("001"),
-		MAKE_AVAILABLE("002"),
+		HAVE_AVAILABLE("002"),
 		FIND_AVAILABLE("003"),
 		SIGNUP("004");
 		
